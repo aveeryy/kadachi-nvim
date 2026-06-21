@@ -1,5 +1,5 @@
 {
-  versionSuffix ? "unknown2",
+  versionSuffix ? "unknown",
 
   lib,
   vimPlugins,
@@ -10,6 +10,12 @@
   nil,
   nixfmt,
   shfmt,
+  ruff,
+  basedpyright,
+  prettier,
+  mdformat,
+  vue-language-server,
+  typescript-language-server,
 }:
 let
   inherit (builtins)
@@ -87,17 +93,30 @@ wrapNeovim {
     blink-cmp
     catppuccin-nvim
     conform-nvim
+    fzf-lua
+    inc-rename-nvim
+    lualine-nvim
+    mini-icons
+    nvim-autopairs
+    nvim-spider
+    oil-nvim
   ];
 
   extraPackages = [
     # LSPs
+    basedpyright
     lua-language-server
     nil
-    shfmt
+    ruff
+    typescript-language-server
+    vue-language-server
 
     # Formatters
     black
+    mdformat
     nixfmt
+    prettier
+    shfmt
     stylua
   ];
 
@@ -111,5 +130,8 @@ wrapNeovim {
         end)
       end
     })
+
+    -- Vue language server
+    vim.g.vue_language_server = "${vue-language-server}/lib/language-tools/packages/language-server";
   '';
 }

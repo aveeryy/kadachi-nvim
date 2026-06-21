@@ -21,13 +21,6 @@ return {
         },
         sources = {
           default = { "lsp", "path", "snippets" },
-          providers = {
-            snippets = {
-              opts = {
-                -- friendly_snippets = true,
-              },
-            },
-          },
         },
       }
       require("blink.cmp").setup(opts)
@@ -39,12 +32,18 @@ return {
     after = function()
       ---@type conform.setupOpts
       local opts = {
+        formatters = {
+          mdformat = {
+            append_args = { "--number" },
+          },
+        },
         formatters_by_ft = {
+          bash = { "shfmt" },
           lua = { "stylua" },
+          markdown = { "mdformat" },
           nix = { "nixfmt" },
           python = { "black" },
           sh = { "shfmt" },
-          bash = { "shfmt" },
         },
         format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
       }
