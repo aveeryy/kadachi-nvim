@@ -50,6 +50,7 @@ let
       markdown_inline
       nix
       python
+      regex
       toml
       typescript
       vue
