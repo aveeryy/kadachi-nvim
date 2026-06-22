@@ -16,6 +16,7 @@
   mdformat,
   vue-language-server,
   typescript-language-server,
+  ripgrep,
 }:
 let
   inherit (builtins)
@@ -118,6 +119,9 @@ wrapNeovim {
     prettier
     shfmt
     stylua
+
+    # Other
+    ripgrep
   ];
 
   extraInitLua = /* lua */ ''
