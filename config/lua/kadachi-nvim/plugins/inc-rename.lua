@@ -9,11 +9,11 @@ return {
         {
           "n",
         },
-        "<leader>rr",
+        "<leader>rn",
         function()
           return ":IncRename " .. vim.fn.expand("<cword>")
         end,
-        { desc = "Incremental rename" }
+        { desc = "Incremental rename", expr = true }
       )
       vim.keymap.set({ "n" }, "<leader>rr", ":IncRename ", { desc = "Incremental rename (clearing existing word)" })
     end,
