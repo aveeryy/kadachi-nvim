@@ -39,11 +39,14 @@ return {
         },
         formatters_by_ft = {
           bash = { "shfmt" },
+          javascript = { "prettier" },
           lua = { "stylua" },
           markdown = { "mdformat" },
           nix = { "nixfmt" },
           python = { "black" },
           sh = { "shfmt" },
+          typescript = { "prettier" },
+          vue = { "prettier" },
         },
         format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
       }
