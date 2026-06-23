@@ -21,6 +21,11 @@ return {
         },
         sources = {
           default = { "lsp", "path", "snippets" },
+          providers = {
+            snippets = {
+              score_offset = 1,
+            },
+          },
         },
       }
       require("blink.cmp").setup(opts)
