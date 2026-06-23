@@ -51,6 +51,7 @@ let
       nix
       python
       regex
+      sql
       toml
       typescript
       vue
