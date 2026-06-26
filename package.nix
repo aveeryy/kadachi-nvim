@@ -97,6 +97,7 @@ wrapNeovim {
     catppuccin-nvim
     conform-nvim
     fzf-lua
+    grug-far-nvim
     inc-rename-nvim
     lualine-nvim
     mini-icons

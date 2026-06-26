@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 local function getDiagnosticJumpFunction(count)
   return function()
