@@ -41,20 +41,26 @@ let
       gitattributes
       gitcommit
       gitignore
+      graphql
       html
       javascript
       jsdoc
       json
       lua
+      luadoc
       markdown
       markdown_inline
       nix
       python
+      query
       regex
+      requirements
+      rust
       sql
       toml
       typescript
       vue
+      yaml
     ]
   );
 
