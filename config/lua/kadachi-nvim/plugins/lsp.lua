@@ -14,11 +14,6 @@ return {
           ["<c-j>"] = { "scroll_documentation_down", "fallback" },
           ["<c-k>"] = { "scroll_documentation_up", "fallback" },
         },
-        completion = {
-          ghost_text = {
-            enabled = true,
-          },
-        },
         sources = {
           default = { "lsp", "path", "snippets" },
           providers = {
