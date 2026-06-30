@@ -141,6 +141,7 @@ wrapNeovim {
         vim.api.nvim_buf_call(ev.buf, function ()
           vim.treesitter.start()
         end)
+        vim.bo[ev.buf].indentexpr = "v:lua.require'kadachi-nvim.config.indent'.indentexpr()";
       end
     })
 
