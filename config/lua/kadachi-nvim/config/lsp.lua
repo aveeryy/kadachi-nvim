@@ -42,6 +42,7 @@ local servers = {
       client.server_capabilities.documentFormattingProvider = false
     end,
   },
+  vue_ls = {},
 }
 
 for server, config in pairs(servers) do
