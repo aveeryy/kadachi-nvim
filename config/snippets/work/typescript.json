@@ -27,13 +27,15 @@
             "/**",
             " * $2",
             " * Binding: ${1/(.*)/${1:/pascalcase}/}",
-            " * @route $3 /${TM_FILENAME_BASE/-/_/g}$4",
+            " * @route $3 /${TM_FILENAME_BASE/api-(.*)/$1/}$4",
             " * @group ${TM_FILENAME_BASE/api-(.*)/$1/}",
             " * $5",
             " */",
-            "public async $1(request: Express.Request, response: Express.Response) {",
-            "      $0",
-            "    }",
+            "public async $1(",
+            "    request: Express.Request,",
+            "    response: Express.Response,",
+            ") {",
+            "    $0",
             "}"
         ]
     }
