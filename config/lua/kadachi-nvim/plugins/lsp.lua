@@ -15,7 +15,7 @@ return {
       local opts = {
         keymap = {
           ["<c-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
-          ["<C-e>"] = { "hide" },
+          ["<C-c>"] = { "hide" },
           ["<CR>"] = { "select_and_accept", "fallback" },
           ["<tab>"] = { "select_next", "snippet_forward", "fallback" },
           ["<s-tab>"] = { "select_prev", "snippet_backward", "fallback" },
