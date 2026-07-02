@@ -106,6 +106,7 @@ wrapNeovim {
     grug-far-nvim
     inc-rename-nvim
     lualine-nvim
+    luasnip
     mini-icons
     nvim-autopairs
     nvim-spider
@@ -132,6 +133,11 @@ wrapNeovim {
     # Other
     ripgrep
   ];
+
+  extraLuaPackages =
+    luaPkgs: with luaPkgs; [
+      jsregexp
+    ];
 
   extraInitLua = /* lua */ ''
     -- Treesitter initialization

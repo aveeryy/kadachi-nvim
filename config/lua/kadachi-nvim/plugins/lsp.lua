@@ -1,6 +1,14 @@
 ---@type lz.n.PluginSpec[]
 return {
   {
+    "luasnip",
+    lazy = false,
+    after = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.g.snippets_path } })
+    end,
+  },
+  {
     "blink.cmp",
     event = "DeferredUIEnter",
     after = function()
@@ -13,6 +21,9 @@ return {
           ["<s-tab>"] = { "select_prev", "snippet_backward", "fallback" },
           ["<c-j>"] = { "scroll_documentation_down", "fallback" },
           ["<c-k>"] = { "scroll_documentation_up", "fallback" },
+        },
+        snippets = {
+          preset = "luasnip",
         },
         sources = {
           default = { "lsp", "path", "snippets" },

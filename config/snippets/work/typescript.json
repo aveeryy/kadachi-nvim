@@ -1,0 +1,40 @@
+{
+    "Controller": {
+        "prefix": "air_controller",
+        "description": "[Work] API Controller",
+        "body": [
+            "\"use strict\";",
+            "",
+            "import { Express } from \"express\";",
+            "import { Controller } from \"../controller\";",
+            "",
+            "/**",
+            " * Generated for ${TM_FILENAME_BASE/api-(.*)/$1/}",
+            " * ${TM_FILENAME_BASE/api-(.*)/${1:/pascalcase}/} API",
+            " * @group ${TM_FILENAME_BASE/-/_/g}",
+            " */",
+            "export class ${TM_FILENAME_BASE/api-(.*)/${1:/pascalcase}/} extends Controller {",
+            "    public registerAPI(prefix: string, application: Express) {",
+            "        $0",
+            "    }",
+            "}"
+        ]
+    },
+    "Controller endpoint": {
+        "prefix": "air_endpoint",
+        "description": "[Work] API Endpoint",
+        "body": [
+            "/**",
+            " * $2",
+            " * Binding: ${1/(.*)/${1:/pascalcase}/}",
+            " * @route $3 /${TM_FILENAME_BASE/-/_/g}$4",
+            " * @group ${TM_FILENAME_BASE/api-(.*)/$1/}",
+            " * $5",
+            " */",
+            "public async $1(request: Express.Request, response: Express.Response) {",
+            "      $0",
+            "    }",
+            "}"
+        ]
+    }
+}
