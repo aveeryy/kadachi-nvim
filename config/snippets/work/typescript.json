@@ -5,7 +5,7 @@
         "body": [
             "\"use strict\";",
             "",
-            "import { Express } from \"express\";",
+            "import Express from \"express\";",
             "import { Controller } from \"../controller\";",
             "",
             "/**",
@@ -14,7 +14,7 @@
             " * @group ${TM_FILENAME_BASE/-/_/g}",
             " */",
             "export class ${TM_FILENAME_BASE/api-(.*)/${1:/pascalcase}/} extends Controller {",
-            "    public registerAPI(prefix: string, application: Express) {",
+            "    public registerAPI(prefix: string, application: Express.Express) {",
             "        $0",
             "    }",
             "}"
