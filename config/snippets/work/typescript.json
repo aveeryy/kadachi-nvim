@@ -3,20 +3,25 @@
         "prefix": "air_controller",
         "description": "[Work] API Controller",
         "body": [
+            "// Reserved for license",
+            "",
             "\"use strict\";",
             "",
             "import Express from \"express\";",
             "import { Controller } from \"../controller\";",
+            "import { sendApiError } from \"../../utils/http-utils\";",
+            "import { ServiceError } from \"../../utils/service-error\";",
             "",
             "/**",
-            " * Generated for ${TM_FILENAME_BASE/api-(.*)/$1/}",
             " * ${TM_FILENAME_BASE/api-(.*)/${1:/pascalcase}/} API",
             " * @group ${TM_FILENAME_BASE/-/_/g}",
             " */",
             "export class ${TM_FILENAME_BASE/api-(.*)/${1:/pascalcase}/} extends Controller {",
             "    public registerAPI(prefix: string, application: Express.Express) {",
-            "        $0",
+            "        $1",
             "    }",
+            "",
+            "    $0",
             "}"
         ]
     },
@@ -35,8 +40,62 @@
             "    request: Express.Request,",
             "    response: Express.Response,",
             ") {",
-            "    $0",
-            "}"
+            "    try {",
+            "        $6",
+            "    } catch (error) {",
+            "        if (error instanceof ServiceError) {",
+            "            return sendApiError(",
+            "                request,",
+            "                response,",
+            "                error.status,",
+            "                error.code,",
+            "                error.message,",
+            "            );",
+            "        }",
+            "",
+            "        throw error;",
+            "    }",
+            "}",
+            "$0"
         ]
+    },
+    "Controller docs typedef": {
+        "prefix": "air_docs_typedef",
+        "description": "[Work] Documentation: Type definition",
+        "body": [
+            "/**",
+            " * @typedef $1",
+            " * $2",
+            " */"
+        ]
+    },
+    "Controller docs typedef prop": {
+        "prefix": "air_docs_typedef_property",
+        "description": "[Work] Documentation: Property",
+        "body": "@property {$1} $2 - $3"
+    },
+    "Controller docs typedef enum prop": {
+        "prefix": "air_docs_typedef_enum_property",
+        "description": "[Work] Documentation: Property (enum)",
+        "body": [
+            "@property {enum} $1 - $2",
+            "*  - eg: $3"
+        ]
+    },
+    "Controller docs error typedef": {
+        "prefix": "air_docs_error_typedef",
+        "description": "[Work] Documentation: Error definition",
+        "body": [
+            "/**",
+            " * @typedef $1",
+            " * @property {string} code.required - Error code:",
+            " * $2",
+            " */"
+        ]
+    },
+    "Service error": {
+        "prefix": "air_service_error",
+        "description": "[Work] Service Error",
+        "body": "throw new ServiceError($1, \"$2\");"
     }
 }
