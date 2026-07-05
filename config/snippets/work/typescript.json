@@ -141,7 +141,7 @@
             "    }",
             "",
             "    public static async create(",
-            "        ${CLIPBOARD/.*\\s([\\w]+):\\s*(\\w+);?/$1: $2,/g}",
+            "        ${CLIPBOARD/.*\\s([\\w]+):\\s*(\\w+);?/$1: $2,\n/g}",
             "    ): Promise<$1> {",
             "      const ${1/(.+)/${1:/camelcase}/} = new $1({",
             "          ${CLIPBOARD/(\\w+):[\\w\\n\\s:;]+/$1/}: createRandomUID(),",
