@@ -118,7 +118,7 @@ wrapNeovim {
         owner = "aveeryy";
         repo = "LuaSnip";
         rev = "feat/transformation-formats";
-        hash = "sha256-9qYBuxbHG3/6LjTcsC3bp81j2GdAsgRpSNgt+/ssmFc=";
+        hash = "sha256-+DkDCe5uNY26LiFlvqcPUYg11oeLe84GBVb2aK0Mc3Y=";
       };
     }))
   ];
