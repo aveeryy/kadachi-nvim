@@ -15,6 +15,8 @@ vim.o.ttyfast = true
 
 vim.o.wrap = false
 
+vim.o.swapfile = false
+
 -- Indentation
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
