@@ -1,6 +1,8 @@
 {
   versionSuffix ? "unknown",
 
+  fetchFromGitHub,
+
   lib,
   vimPlugins,
   wrapNeovim,
@@ -106,11 +108,19 @@ wrapNeovim {
     grug-far-nvim
     inc-rename-nvim
     lualine-nvim
-    luasnip
     mini-icons
     nvim-autopairs
     nvim-spider
     oil-nvim
+
+    (luasnip.overrideAttrs (_: {
+      src = fetchFromGitHub {
+        owner = "aveeryy";
+        repo = "LuaSnip";
+        rev = "feat/transformation-formats";
+        hash = "sha256-9qYBuxbHG3/6LjTcsC3bp81j2GdAsgRpSNgt+/ssmFc=";
+      };
+    }))
   ];
 
   extraPackages = [
