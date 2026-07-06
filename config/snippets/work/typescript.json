@@ -210,5 +210,44 @@
             "    $0",
             "});"
         ]
+    },
+    "Test model": {
+        "prefix": "air_tests_model",
+        "description": "[Work][WIP] Test model",
+        "body": [
+            "\"use strict\";",
+            "",
+            "import { ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} } from \"../../../../src/models/$TM_FILENAME_BASE\";",
+            "import { TestModel } from \"./model\";",
+            "",
+            "export class Test${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends TestModel {",
+            "    $1",
+            "",
+            "    private constructor(track: boolean) {",
+            "        super(track);",
+            "    }",
+            "",
+            "    public static async create(params?: {",
+            "        track?: boolean,",
+            "        $2",
+            "    }): Promise<Test${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}> {",
+            "        const instance = new Test${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(params?.track ?? true);",
+            "        await instance.new${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(",
+            "            ${2/([\\w]+)\\??:\\s*\\w+,?;?/params?.$1,/g}",
+            "        );",
+            "        return instance;",
+            "    }",
+            "",
+            "    private async new${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(",
+            "        $2",
+            "    ): Promise<void> {",
+            "        $3",
+            "    }",
+            "",
+            "    protected async onDelete(): Promise<void> {",
+            "        $4",
+            "    }",
+            "}"
+        ]
     }
 }
