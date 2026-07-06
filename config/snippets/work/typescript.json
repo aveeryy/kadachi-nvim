@@ -168,5 +168,47 @@
             "    }",
             "}"
         ]
+    },
+    "Test base": {
+        "prefix": "air_tests_base",
+        "description": "[Work] Base test template",
+        "body": [
+            "\"use strict\";",
+            "",
+            "import assert from \"assert\";",
+            "import { APITester } from \"../test-tools/api-tester\";",
+            "import { Api${TM_FILENAME_BASE/tests-api-(.*)/${1:/pascalcase}/} } from \"../test-tools/api-bindings/api-group-${TM_FILENAME_BASE/tests-api-(.*)/$1/}\"",
+            "import { TestModel } from \"../test-tools/models/model\";",
+            "",
+            "describe(\"API /${TM_FILENAME_BASE/tests-api-(.*)/$1/}\", () => {",
+            "    before(async () => {",
+            "        $1",
+            "    });",
+            "",
+            "    after(async () => {",
+            "        await TestModel.cleanupAll();",
+            "    });",
+            "",
+            "    $0",
+            "});"
+        ]
+    },
+    "Test describe": {
+        "prefix": "air_tests_api_describe",
+        "description": "[Work] Test API describe",
+        "body": [
+            "describe(\"$1 /${TM_FILENAME_BASE/tests-api-(.*)/$1/}$2\", () => {",
+            "    $0",
+            "});"
+        ]
+    },
+    "Test it": {
+        "prefix": "air_tests_it",
+        "description": "[Work] Test it block",
+        "body": [
+            "it(\"Should $1\", async () => {",
+            "    $0",
+            "});"
+        ]
     }
 }
