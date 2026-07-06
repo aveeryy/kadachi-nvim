@@ -13,6 +13,12 @@ local function getDiagnosticJumpFunction(count)
   end
 end
 
+-- Keep screen centered on jumps
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- Diagnostics
 vim.keymap.set({ "n" }, "<leader>gd", "<C-]>", { desc = "Go to definition under cursor" })
 vim.keymap.set({ "n" }, "<leader>dp", getDiagnosticJumpFunction(-1), { desc = "Go to previous diagnostic" })
