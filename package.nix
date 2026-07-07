@@ -134,11 +134,12 @@ wrapNeovim {
 
     # Formatters
     black
-    mdformat
     nixfmt
     prettier
     shfmt
     stylua
+
+    (mdformat.withPlugins (plugins: with plugins; [ mdformat-gfm ]))
 
     # Other
     ripgrep
