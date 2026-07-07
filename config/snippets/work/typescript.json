@@ -211,6 +211,18 @@
             "});"
         ]
     },
+    "Test API error test": {
+        "prefix": "air_tests_api_test_error",
+        "description": "[Work] Test API error test",
+        "body": [
+            "await APITester.TestError(",
+            "    Api${1:${TM_FILENAME_BASE/tests-api-(.*)/${1:/pascalcase}/}}.$2,",
+            "    $3,",
+            "    $4,",
+            "    \"$0\",",
+            ");"
+        ]
+    },
     "Test model": {
         "prefix": "air_tests_model",
         "description": "[Work][WIP] Test model",
