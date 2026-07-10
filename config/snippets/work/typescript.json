@@ -261,5 +261,29 @@
             "    }",
             "}"
         ]
+    },
+    "Service singleton": {
+        "prefix": "air_service",
+        "description": "[Work] Service",
+        "body": [
+            "// Reserved for license",
+            "",
+            "\"use strict\";",
+            "",
+            "import { ServiceError } from \"../utils/service-error\";",
+            "",
+            "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "    private static instance: ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+            "",
+            "    public static getInstance(): ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+            "        if (!${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.instance) {",
+            "            ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.instance = new ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+            "        }",
+            "        return ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.instance;",
+            "    }",
+            "",
+            "    $0",
+            "}"
+        ]
     }
 }
