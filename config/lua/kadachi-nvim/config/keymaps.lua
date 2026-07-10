@@ -19,8 +19,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Diagnostics
-vim.keymap.set({ "n" }, "<leader>gd", "<C-]>", { desc = "Go to definition under cursor" })
+-- LSP
+vim.keymap.set({ "n" }, "gd", vim.lsp.buf.definition, { desc = "Go to definition under cursor" })
 vim.keymap.set({ "n" }, "<leader>dp", getDiagnosticJumpFunction(-1), { desc = "Go to previous diagnostic" })
 vim.keymap.set({ "n" }, "<leader>dn", getDiagnosticJumpFunction(1), { desc = "Go to next diagnostic" })
 
