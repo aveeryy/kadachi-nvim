@@ -117,7 +117,7 @@
             "import { createRandomUID } from \"../utils/text-utils\";",
             "",
             "const DATA_SOURCE = DataSource.DEFAULT;",
-            "const TABLE = \"${2:${TM_FILENAME_BASE/-/_/}s}\";",
+            "const TABLE = \"${2:${TM_FILENAME_BASE/-/_/g}s}\";",
             "const PRIMARY_KEY = \"${CLIPBOARD/(\\w+):[\\w\\n\\s:;]+/$1/}\";",
             "",
             "export class ${1:${TM_FILENAME_BASE/(.+)/${1:/pascalcase}/}} extends DataModel {",
