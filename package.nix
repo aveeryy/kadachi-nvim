@@ -19,6 +19,7 @@
   vue-language-server,
   typescript-language-server,
   ripgrep,
+  rust-analyzer,
 }:
 let
   inherit (builtins)
@@ -129,6 +130,7 @@ wrapNeovim {
     lua-language-server
     nil
     ruff
+    rust-analyzer
     typescript-language-server
     vue-language-server
 

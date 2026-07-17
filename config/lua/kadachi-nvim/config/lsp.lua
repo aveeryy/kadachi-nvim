@@ -19,6 +19,7 @@ local servers = {
   },
   nil_ls = {},
   ruff = {},
+  rust_analyzer = {},
   ts_ls = {
     filetypes = {
       "vue",
