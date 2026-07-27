@@ -141,7 +141,12 @@ wrapNeovim {
     shfmt
     stylua
 
-    (mdformat.withPlugins (plugins: with plugins; [ mdformat-gfm ]))
+    (mdformat.withPlugins (
+      plugins: with plugins; [
+        mdformat-frontmatter
+        mdformat-gfm
+      ]
+    ))
 
     # Other
     ripgrep
