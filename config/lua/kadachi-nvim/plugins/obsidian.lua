@@ -5,11 +5,15 @@ return {
     after = function()
       local obsidian_config_file = vim.env.XDG_CONFIG_HOME .. "/obsidian/obsidian.json"
       local obsidian_workspaces = {}
+      local isInsideWorkspace = false
 
       if vim.uv.fs_stat(obsidian_config_file) then
         local obsidian_config = vim.json.decode(vim.fn.readblob(obsidian_config_file))
         for _, vault in pairs(obsidian_config.vaults) do
           table.insert(obsidian_workspaces, { name = vim.fs.basename(vault.path), path = vault.path })
+          if vim.env.PWD:match(vault.path) then
+            isInsideWorkspace = true
+          end
         end
       end
 
@@ -17,7 +21,9 @@ return {
         return
       end
 
-      require("obsidian").setup({
+      local obsidian = require("obsidian")
+
+      obsidian.setup({
         workspaces = obsidian_workspaces,
 
         legacy_commands = false,
@@ -42,6 +48,15 @@ return {
 
       vim.keymap.set({ "n" }, "<leader>ow", "<cmd>Obsidian workspace<CR>")
       vim.keymap.set({ "n" }, "<leader>od", "<cmd>Obsidian today<CR>")
+
+      -- Set the default workspace if not inside one
+      if not isInsideWorkspace then
+        if vim.env.PWD:match(vim.env.HOME .. "/Trabajo") or vim.env.HOSTNAME == "mizuki" then
+          obsidian.Workspace.set("Trabajo")
+        else
+          obsidian.Workspace.set("Personal")
+        end
+      end
     end,
   },
 }
