@@ -112,6 +112,7 @@ wrapNeovim {
     mini-icons
     nvim-autopairs
     nvim-spider
+    obsidian-nvim
     oil-nvim
 
     (luasnip.overrideAttrs (_: {
