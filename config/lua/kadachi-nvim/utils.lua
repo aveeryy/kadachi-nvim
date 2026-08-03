@@ -36,4 +36,10 @@ function M.open_floating_window(buf, title)
   })
 end
 
+function M.open_file_in_floating_window(path)
+  local buf = vim.api.nvim_create_buf(false, true)
+  M.open_floating_window(buf, vim.fs.basename(path))
+  vim.cmd("edit " .. path)
+end
+
 return M

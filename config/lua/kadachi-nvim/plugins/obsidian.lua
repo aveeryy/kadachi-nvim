@@ -22,7 +22,11 @@ return {
         return
       end
 
+      local utils = require("kadachi-nvim.utils")
+
       local obsidian = require("obsidian")
+      local daily = require("obsidian.daily")
+      local picker = require("obsidian.picker")
 
       obsidian.setup({
         workspaces = obsidian_workspaces,
@@ -61,6 +65,25 @@ return {
       vim.keymap.set({ "n" }, "<leader>of", "<cmd>Obsidian quick_switch<CR>")
       vim.keymap.set({ "n" }, "<leader>og", "<cmd>Obsidian search<CR>")
       vim.keymap.set({ "n" }, "<leader>od", "<cmd>Obsidian today<CR>")
+      -- Open in floating window
+      vim.keymap.set({ "n" }, "<leader>wof", function()
+        picker.find_notes({
+          prompt_title = "Quick Switch",
+          callback = utils.open_file_in_floating_window,
+        })
+      end)
+      vim.keymap.set({ "n" }, "<leader>wog", function()
+        picker.grep_notes({
+          callback = utils.open_file_in_floating_window,
+        })
+      end)
+      vim.keymap.set({ "n" }, "<leader>wod", function()
+        local note = daily.today()
+        if not note:exists() then
+          note:write()
+        end
+        utils.open_file_in_floating_window(note.path.filename)
+      end)
 
       vim.api.nvim_create_autocmd("User", {
         pattern = "ObsidianNoteEnter",
