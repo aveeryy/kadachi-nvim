@@ -48,6 +48,12 @@ return {
           date_format = "YYYY/MM/YYYY-MM-DD",
         },
 
+        file = {
+          ignore_filters = {
+            ".trash/*",
+          },
+        },
+
         footer = {
           enabled = false,
         },
