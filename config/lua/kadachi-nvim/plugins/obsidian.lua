@@ -52,6 +52,8 @@ return {
       })
 
       vim.keymap.set({ "n" }, "<leader>ow", "<cmd>Obsidian workspace<CR>")
+      vim.keymap.set({ "n" }, "<leader>of", "<cmd>Obsidian quick_switch<CR>")
+      vim.keymap.set({ "n" }, "<leader>og", "<cmd>Obsidian search<CR>")
       vim.keymap.set({ "n" }, "<leader>od", "<cmd>Obsidian today<CR>")
 
       -- Set the default workspace if not inside one
