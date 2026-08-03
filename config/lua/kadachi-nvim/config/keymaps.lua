@@ -1,3 +1,5 @@
+local utils = require("kadachi-nvim.utils")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -25,7 +27,11 @@ vim.keymap.set({ "n" }, "<leader>dp", getDiagnosticJumpFunction(-1), { desc = "G
 vim.keymap.set({ "n" }, "<leader>dn", getDiagnosticJumpFunction(1), { desc = "Go to next diagnostic" })
 
 -- Tools
-vim.keymap.set({ "n" }, "<leader>lg", ":terminal lazygit<CR>", { desc = "Open lazygit" })
+vim.keymap.set({ "n" }, "<leader>lg", function()
+  local buf = vim.api.nvim_create_buf(false, true)
+  utils.open_floating_window(buf, "lazygit")
+  vim.api.nvim_command(":terminal lazygit")
+end, { desc = "Open lazygit in a floating window" })
 
 -- Clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system's clipboard" })
