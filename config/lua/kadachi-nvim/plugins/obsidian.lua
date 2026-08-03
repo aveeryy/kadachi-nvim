@@ -65,7 +65,7 @@ return {
       vim.api.nvim_create_autocmd("User", {
         pattern = "ObsidianNoteEnter",
         callback = function()
-          vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Obsidian toggle_checkbox<cr>", {
+          vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<cmd>Obsidian toggle_checkbox<cr>", {
             buffer = true,
             desc = "Toggle checkbox",
           })
