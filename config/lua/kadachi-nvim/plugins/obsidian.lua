@@ -3,7 +3,8 @@ return {
     "obsidian.nvim",
     event = "DeferredUIEnter",
     after = function()
-      local obsidian_config_file = vim.env.XDG_CONFIG_HOME .. "/obsidian/obsidian.json"
+      local config_path = vim.env.XDG_CONFIG_HOME or vim.env.HOME .. "/.config"
+      local obsidian_config_file = config_path .. "/obsidian/obsidian.json"
       local obsidian_workspaces = {}
       local isInsideWorkspace = false
 
