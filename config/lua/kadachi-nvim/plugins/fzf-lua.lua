@@ -1,8 +1,7 @@
 return {
   {
     "fzf-lua",
-    event = "DeferredUIEnter",
-    priority = 100,
+    lazy = false,
     after = function()
       local fzf_lua = require("fzf-lua")
 

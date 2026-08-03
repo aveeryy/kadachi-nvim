@@ -99,13 +99,13 @@ wrapNeovim {
     lzn-auto-require
     nvim-lspconfig
     friendly-snippets
+    fzf-lua
   ]);
 
   optPlugins = with vimPlugins; [
     blink-cmp
     catppuccin-nvim
     conform-nvim
-    fzf-lua
     grug-far-nvim
     inc-rename-nvim
     lualine-nvim
