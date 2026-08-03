@@ -38,6 +38,10 @@ return {
           date_format = "YYYY/MM/YYYY-MM-DD",
         },
 
+        footer = {
+          enabled = false,
+        },
+
         frontmatter = {
           enabled = false,
         },
