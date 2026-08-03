@@ -29,6 +29,12 @@ return {
 
         legacy_commands = false,
 
+        checkbox = {
+          enabled = true,
+          create_new = true,
+          order = { " ", "/", "x" },
+        },
+
         completion = {
           default = true,
         },
@@ -55,6 +61,16 @@ return {
       vim.keymap.set({ "n" }, "<leader>of", "<cmd>Obsidian quick_switch<CR>")
       vim.keymap.set({ "n" }, "<leader>og", "<cmd>Obsidian search<CR>")
       vim.keymap.set({ "n" }, "<leader>od", "<cmd>Obsidian today<CR>")
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "ObsidianNoteEnter",
+        callback = function()
+          vim.keymap.set({ "n", "v" }, "<C-l>", "<cmd>Obsidian toggle_checkbox<cr>", {
+            buffer = true,
+            desc = "Toggle checkbox",
+          })
+        end,
+      })
 
       -- Set the default workspace if not inside one
       if not isInsideWorkspace then
