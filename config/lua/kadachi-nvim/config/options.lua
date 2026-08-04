@@ -17,6 +17,10 @@ vim.o.wrap = false
 
 vim.o.swapfile = false
 
+-- Split windows
+vim.o.splitbelow = true
+vim.o.splitright = true
+
 -- Indentation
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
