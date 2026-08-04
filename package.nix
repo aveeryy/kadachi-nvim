@@ -112,7 +112,6 @@ wrapNeovim {
     mini-icons
     nvim-autopairs
     nvim-spider
-    obsidian-nvim
     oil-nvim
 
     (luasnip.overrideAttrs {
@@ -121,6 +120,15 @@ wrapNeovim {
         repo = "LuaSnip";
         rev = "feat/transformation-formats";
         hash = "sha256-+DkDCe5uNY26LiFlvqcPUYg11oeLe84GBVb2aK0Mc3Y=";
+      };
+    })
+
+    (obsidian-nvim.overrideAttrs {
+      src = fetchFromGitHub {
+        owner = "obsidian-nvim";
+        repo = "obsidian.nvim";
+        rev = "5acd67bd55eaeeb28cd7167ca48ba2276655137d";
+        hash = "sha256-3HhlO6sqksmhcn2e+CJ20Hd/dTZVot6/K07QNPLmqRI=";
       };
     })
   ];
