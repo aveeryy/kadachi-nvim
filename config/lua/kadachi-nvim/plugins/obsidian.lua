@@ -67,12 +67,16 @@ return {
         },
       })
 
+      local function open_note_in_floating_window(path)
+        utils.open_file_in_floating_window(path, utils.remove_file_extension(vim.fs.basename(path)))
+      end
+
       local function open_last_note(floating)
         if vim.g.obsidian_last_note == nil then
           return vim.print("No notes have been opened this session")
         end
         if floating then
-          utils.open_file_in_floating_window(vim.g.obsidian_last_note)
+          open_note_in_floating_window(vim.g.obsidian_last_note)
         else
           vim.cmd("edit " .. vim.g.obsidian_last_note)
         end
@@ -88,14 +92,14 @@ return {
         picker.find_notes({
           prompt_title = "Quick Switch",
           callback = function(paths)
-            utils.open_file_in_floating_window(paths[1])
+            open_note_in_floating_window(paths[1])
           end,
         })
       end)
       vim.keymap.set({ "n" }, "<leader>wog", function()
         picker.grep_notes({
           callback = function(files)
-            utils.open_file_in_floating_window(files[1].filename)
+            open_note_in_floating_window(files[1].filename)
           end,
         })
       end)
@@ -104,7 +108,7 @@ return {
         if not note:exists() then
           note:write()
         end
-        utils.open_file_in_floating_window(note.path.filename)
+        open_note_in_floating_window(note.path.filename)
       end)
       vim.keymap.set({ "n" }, "<leader>wol", function()
         open_last_note(true)

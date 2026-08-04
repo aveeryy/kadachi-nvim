@@ -43,10 +43,14 @@ function M.open_floating_window(buf, title)
   })
 end
 
-function M.open_file_in_floating_window(path)
+function M.open_file_in_floating_window(path, title)
   local buf = vim.api.nvim_create_buf(false, true)
-  M.open_floating_window(buf, vim.fs.basename(path))
+  M.open_floating_window(buf, title or vim.fs.basename(path))
   vim.cmd("edit " .. path)
+end
+
+function M.remove_file_extension(filename)
+  return filename:gsub("%.%w+$", "")
 end
 
 return M
