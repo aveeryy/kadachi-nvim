@@ -29,9 +29,16 @@ function M.open_floating_window(buf, title)
   local win =
     vim.api.nvim_open_win(buf, true, merge_tables({ relative = "editor", title = title }, get_floating_window_size()))
 
-  vim.api.nvim_create_autocmd("VimResized", {
+  local autocmd_id = vim.api.nvim_create_autocmd("VimResized", {
     callback = function()
       vim.api.nvim_win_set_config(win, merge_tables(vim.api.nvim_win_get_config(win), get_floating_window_size()))
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("WinLeave", {
+    once = true,
+    callback = function()
+      vim.api.nvim_del_autocmd(autocmd_id)
     end,
   })
 end
