@@ -75,12 +75,16 @@ return {
       vim.keymap.set({ "n" }, "<leader>wof", function()
         picker.find_notes({
           prompt_title = "Quick Switch",
-          callback = utils.open_file_in_floating_window,
+          callback = function(paths)
+            utils.open_file_in_floating_window(paths[1])
+          end,
         })
       end)
       vim.keymap.set({ "n" }, "<leader>wog", function()
         picker.grep_notes({
-          callback = utils.open_file_in_floating_window,
+          callback = function(files)
+            utils.open_file_in_floating_window(files[1].filename)
+          end,
         })
       end)
       vim.keymap.set({ "n" }, "<leader>wod", function()
