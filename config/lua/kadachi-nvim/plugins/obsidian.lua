@@ -67,10 +67,22 @@ return {
         },
       })
 
+      local function open_last_note(floating)
+        if vim.g.obsidian_last_note == nil then
+          return vim.print("No notes have been opened this session")
+        end
+        if floating then
+          utils.open_file_in_floating_window(vim.g.obsidian_last_note)
+        else
+          vim.cmd("edit " .. vim.g.obsidian_last_note)
+        end
+      end
+
       vim.keymap.set({ "n" }, "<leader>ow", "<cmd>Obsidian workspace<CR>")
       vim.keymap.set({ "n" }, "<leader>of", "<cmd>Obsidian quick_switch<CR>")
       vim.keymap.set({ "n" }, "<leader>og", "<cmd>Obsidian search<CR>")
       vim.keymap.set({ "n" }, "<leader>od", "<cmd>Obsidian today<CR>")
+      vim.keymap.set({ "n" }, "<leader>ol", open_last_note)
       -- Open in floating window
       vim.keymap.set({ "n" }, "<leader>wof", function()
         picker.find_notes({
@@ -94,10 +106,14 @@ return {
         end
         utils.open_file_in_floating_window(note.path.filename)
       end)
+      vim.keymap.set({ "n" }, "<leader>wol", function()
+        open_last_note(true)
+      end)
 
       vim.api.nvim_create_autocmd("User", {
         pattern = "ObsidianNoteEnter",
         callback = function()
+          vim.g.obsidian_last_note = vim.api.nvim_buf_get_name(0)
           vim.keymap.set({ "n", "v", "i" }, "<C-l>", "<cmd>Obsidian toggle_checkbox<cr>", {
             buffer = true,
             desc = "Toggle checkbox",
