@@ -115,14 +115,14 @@ wrapNeovim {
     obsidian-nvim
     oil-nvim
 
-    (luasnip.overrideAttrs (_: {
+    (luasnip.overrideAttrs {
       src = fetchFromGitHub {
         owner = "aveeryy";
         repo = "LuaSnip";
         rev = "feat/transformation-formats";
         hash = "sha256-+DkDCe5uNY26LiFlvqcPUYg11oeLe84GBVb2aK0Mc3Y=";
       };
-    }))
+    })
   ];
 
   extraPackages = [
