@@ -151,9 +151,54 @@ wrapNeovim {
     stylua
 
     (mdformat.withPlugins (
-      plugins: with plugins; [
+      pythonPackages: with pythonPackages; [
         mdformat-frontmatter
         mdformat-gfm
+        (buildPythonPackage (finalAttrs: {
+          pname = "mdformat-obsidian";
+          version = "0.3.2";
+
+          src = fetchPypi {
+            inherit (finalAttrs) version;
+            pname = "mdformat_obsidian";
+            hash = "sha256-HeVX5hxl9WMVKgM3qWRZJNiGSLfFyj8tM3kUH1uXMuw=";
+          };
+
+          dependencies = [
+            pythonPackages.mdformat
+            mdformat-gfm
+            mdit-py-plugins
+          ];
+
+          pyproject = true;
+          build-system = [
+            uv-build
+          ];
+
+          doCheck = false;
+        }))
+        (buildPythonPackage (finalAttrs: {
+          pname = "mdformat-wikilink";
+          version = "0.3.0";
+
+          src = fetchPypi {
+            inherit (finalAttrs) version;
+            pname = "mdformat_wikilink";
+            hash = "sha256-qkglVLcU5tsZqYjQFFlSacbS6eaW0U2scX2MJezUEgE=";
+          };
+
+          dependencies = [
+            pythonPackages.mdformat
+            mdit-py-plugins
+          ];
+
+          pyproject = true;
+          build-system = [
+            poetry-core
+          ];
+
+          doCheck = false;
+        }))
       ]
     ))
 
