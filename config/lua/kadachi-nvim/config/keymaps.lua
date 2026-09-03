@@ -21,6 +21,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Split navigation
+vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l")
+
 -- LSP
 vim.keymap.set({ "n" }, "gd", vim.lsp.buf.definition, { desc = "Go to definition under cursor" })
 vim.keymap.set({ "n" }, "<leader>dp", getDiagnosticJumpFunction(-1), { desc = "Go to previous diagnostic" })
