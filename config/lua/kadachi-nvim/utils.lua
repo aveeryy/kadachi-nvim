@@ -53,4 +53,12 @@ function M.remove_file_extension(filename)
   return filename:gsub("%.%w+$", "")
 end
 
+function M.get_system_name()
+  if vim.uv.fs_stat("/etc/kadachi_host") then
+    return vim.fn.readblob("/etc/kadachi_host")
+  end
+
+  return vim.uv.os_gethostname()
+end
+
 return M
