@@ -127,7 +127,7 @@ return {
 
       -- Set the default workspace if not inside one
       if not isInsideWorkspace then
-        if vim.env.PWD:match(vim.env.HOME .. "/Trabajo") or vim.uv.os_gethostname() == "mizuki" then
+        if vim.env.PWD:match(vim.env.HOME .. "/Trabajo") or utils.get_system_name() == "mizuki" then
           obsidian.Workspace.set("Trabajo")
         else
           obsidian.Workspace.set("Personal")
