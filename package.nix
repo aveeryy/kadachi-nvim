@@ -78,7 +78,11 @@ let
   getTreesitterPatterns =
     treesitterPkg:
     join ", " (
-      map getTreesitterPattern (filter (dep: hasInfix "grammar" dep.name) treesitterPkg.dependencies)
+      map getTreesitterPattern (
+        filter (
+          dep: (hasInfix "grammar" dep.name) && !(hasInfix "diff" dep.name)
+        ) treesitterPkg.dependencies
+      )
     );
 in
 wrapNeovim {
