@@ -125,6 +125,13 @@ return {
         end,
       })
 
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "ObsidianNoteLeave",
+        callback = function()
+          vim.api.nvim_command("write")
+        end,
+      })
+
       -- Set the default workspace if not inside one
       if not isInsideWorkspace then
         if vim.env.PWD:match(vim.env.HOME .. "/Trabajo") or utils.get_system_name() == "mizuki" then
