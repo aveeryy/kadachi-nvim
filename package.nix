@@ -13,7 +13,7 @@
   nixfmt,
   shfmt,
   ruff,
-  basedpyright,
+  pyrefly,
   prettier,
   mdformat,
   vue-language-server,
@@ -139,7 +139,7 @@ wrapNeovim {
 
   extraPackages = [
     # LSPs
-    basedpyright
+    pyrefly
     lua-language-server
     nil
     ruff
