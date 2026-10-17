@@ -1,14 +1,13 @@
 local servers = {
-  pyrefly = {},
-  -- basedpyright = {
-  --   settings = {
-  --     basedpyright = {
-  --       analysis = {
-  --         diagnosticSeverityOverrides = { reportUndefinedVariable = false, reportUnusedVariable = false },
-  --       },
-  --     },
-  --   },
-  -- },
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          diagnosticSeverityOverrides = { reportUndefinedVariable = false, reportUnusedVariable = false },
+        },
+      },
+    },
+  },
   lua_ls = {
     settings = {
       Lua = {
