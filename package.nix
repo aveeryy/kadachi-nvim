@@ -20,6 +20,7 @@
   typescript-language-server,
   ripgrep,
   rust-analyzer,
+  fzf,
 }:
 let
   inherit (builtins)
@@ -207,6 +208,7 @@ wrapNeovim {
     ))
 
     # Other
+    fzf
     ripgrep
   ];
 
